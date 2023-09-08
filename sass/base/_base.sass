@@ -1,0 +1,172 @@
+@use 'base/theme' as *
+@use 'base/typography' as *
+
+html
+    overflow-x: hidden
+    
+body
+    background: $black
+    overflow-x: hidden
+    font-family: $body
+    font-size: 1.125rem
+    line-height: 1.5
+    color: $primary
+    scroll-behavior: smooth
+
+section
+    box-sizing: border-box
+
+h1, h2, h3, h4, h5, p
+    margin: 0
+    padding: 0
+
+h1
+    font-size: 3.375rem
+    line-height: 3.125rem
+    font-family: $title
+    color: $primary
+    margin-top: 2rem
+    margin-bottom: 2rem
+    text-transform: uppercase
+
+h2
+    font-size: 2rem
+    line-height: 1.1
+    font-family: $title
+    color: $primary
+    margin-bottom: 2rem
+    text-transform: uppercase
+
+p
+    font-size: 1.125rem
+    line-height: $line-height
+    font-family: $body
+    color: $primary
+
+    @media screen and (min-width: $mobile)
+        font-size: 1rem
+
+a
+    color: $primary
+    text-decoration: none
+    transition: all .2s ease-in-out
+
+    &:hover
+        color: darken($primary, 10%)
+
+.parallax
+    position: absolute
+
+    &[data-mobile="false"]
+        position: relative
+
+        @media screen and (min-width: $mobile)
+            position: absolute
+
+    &[data-mobile-visible="false"]
+        display: none
+        opacity: 0
+
+        @media screen and (min-width: $mobile)
+            display: flex
+            opacity: 1
+
+.container
+    width: 100%
+    max-width: 75rem
+    display: flex
+    align-items: flex-start
+    justify-content: flex-start
+    padding: 0 2rem
+    box-sizing: border-box
+
+main, .main-article
+    width: 100%
+    height: auto
+
+.buttons, .buttons > div
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    margin-top: 4rem
+    gap: 1.5rem
+    width: 100%
+    box-sizing: border-box
+
+    @media screen and (min-width: $mobile)
+        flex-direction: row
+        width: auto
+
+    > div > a
+        width: 100%
+
+        @media screen and (min-width: $mobile)
+            width: auto
+        
+
+.button
+    display: inline-block
+    font-size: 1.125rem
+    font-weight: 400
+    padding: .75rem 2rem .5rem
+    text-decoration: none
+    border-radius: 50px
+    border: 1px solid $primary
+    font-family: $body
+    transition: all .2s ease-in-out
+    box-sizing: border-box
+    text-align: center
+    width: 100%
+    z-index: 1000
+
+    @media screen and (min-width: $mobile)
+        width: auto
+
+    &:hover
+        transform: scale(1.05)
+
+    &.primary
+        background-color: $primary
+        border: 2px solid $primary
+        color: $white
+
+        &:hover
+            background-color: darken($primary, 10%)
+            border-color: darken($primary, 10%)
+
+    &.secondary
+        background-color: transparent
+        border: 2px solid $primary
+        color: $primary
+
+        &:hover
+            background-color: $primary
+            color: $black
+
+.butterfly
+    animation: butterfly-fade 5s infinite
+
+    @keyframes butterfly-fade
+        0%
+            opacity: 0.3
+        50%
+            opacity: 1
+        100%
+            opacity: 0.3
+
+[class*="pattern-"]
+    animation: pattern-fade 9s infinite
+
+    @keyframes pattern-fade
+        0%
+            opacity: 1
+        25%
+            opacity: .5
+        50%
+            opacity: 1
+        75%
+            opacity: .75
+        100%
+            opacity: 1
+        
